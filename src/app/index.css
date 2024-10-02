@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@font-face {
+  font-family: 'Pally';
+  src: url('/fonts/Pally-Regular.woff2') format('woff2');
+  font-weight: normal; /* Adjust based on your font */
+  font-style: normal;  /* Adjust based on your font */
+}
+
+@font-face {
+  font-family: 'Pally';
+  src: url('/fonts/Pally-Medium.woff2') format('woff2');
+  font-weight: 500; /* Adjust based on your font */
+  font-style: normal;  /* Adjust based on your font */
+}
+
+@font-face {
+  font-family: 'Pally';
+  src: url('/fonts/Pally-Variable.woff2') format('woff2');
+  font-weight: 700; /* Adjust based on your font */
+  font-style: normal;  /* Adjust based on your font */
+}
+
+@font-face {
+  font-family: 'Pally';
+  src: url('/fonts/Pally-Bold.woff2') format('woff2');
+  font-weight: bold; /* Adjust based on your font */
+  font-style: normal;  /* Adjust based on your font */
+}
+
+body {
+  font-family: "Manrope", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+.flexItem {
+  flex: 1;
+}

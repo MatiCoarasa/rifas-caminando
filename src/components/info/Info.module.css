@@ -1,0 +1,17 @@
+.root {
+    max-width: 555px;
+}
+
+.titulo {
+    font-family: "Pally", Helvetica, sans-serif;
+    font-size: 60px;
+    color: #FD8B37;
+}
+
+.bajada {
+    font-size: 24px;
+}
+
+.bold {
+    font-weight: bold;
+}

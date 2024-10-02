@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    justify-content: center; /* Centers the items vertically */
+    align-items: center; /* Centers the items horizontally */
+    width: 100%;
+    background-color: #FD8B37;
+    height: 100px;
+}
+
+.header img {
+    height: 60%; /* Adjusts the height of the image */
+    padding: 10px;
+    object-fit: cover; /* Ensures the image covers the allocated space */
+}

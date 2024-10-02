@@ -1,0 +1,85 @@
+.vendedorContainer {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+    align-items: center;
+}
+
+.rifasPregunta {
+    font-size: 24px;
+}
+
+.valorContainer {
+    background-color: #FFDA9F;
+    border: 1px solid #E5A339;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    align-content: center;
+    overflow: hidden;
+}
+
+.valor {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111111;
+}
+
+.modificadorContainer {
+    border: 1px solid #111111;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    align-content: center;
+}
+
+.modificadorContainerDisabled {
+    border: 1px solid #999999;
+    opacity: 40%;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    align-content: center;
+}
+
+
+.modificadorValor {
+    padding: 10px;
+    background: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.modificadorValorDisabled {
+    color: #999999;
+    padding: 10px;
+    background: none;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 40%;
+    cursor: not-allowed;
+    margin-top: 2px;
+}
+
+.precioTotal {
+    margin: 0 5px;
+    font-size: 20px;
+    color: #111111;
+    border-radius: 6px;
+}
+
+.comprarButton {
+    font-size: 22px;
+    background-color: #E5A339;
+    border-radius: 12px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    align-content: center;
+    place-self: flex-end;
+    cursor: pointer;
+}

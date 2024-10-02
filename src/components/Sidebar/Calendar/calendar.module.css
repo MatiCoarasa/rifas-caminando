@@ -1,0 +1,49 @@
+.calendario {
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.mesDiv {
+    align-items: center;
+    background-color: #e5a339;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    justify-content: center;
+    width: 54px;
+    height: 20px;
+}
+
+.mesTexto {
+    color: #101010;
+    font-size: 12px;
+    font-weight: 700;
+    height: 12px;
+    text-align: center;
+}
+
+.diaDiv {
+    align-items: center;
+    background-color: #ffda9f;
+    border: 1px solid #e5a339;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    width: 52px;
+    height: 30px;
+}
+
+.diaTexto {
+    color: #101010;
+    font-size: 22px;
+    font-weight: 300;
+    height: 20px;
+    line-height: normal;
+    margin-top: -10px;
+    position: relative;
+    text-align: center;
+}
