@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF3DF;
+    padding: 35px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 30px 30px;
+    gap: 30px;
+}
+
+.datosContainer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.input {
+    font-family: inherit;
+    background: none;
+    padding: 15px;
+    border-color: #808080;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    outline: none;
+    width: 40%;
+}

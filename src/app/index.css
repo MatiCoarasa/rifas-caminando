@@ -38,3 +38,12 @@ body {
 .flexItem {
   flex: 1;
 }
+
+h3 {
+  font-family: "Manrope", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #FD8B37;
+  letter-spacing: 0.1em;
+  margin: 0;
+}

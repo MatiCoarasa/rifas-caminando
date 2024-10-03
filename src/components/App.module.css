@@ -1,9 +1,11 @@
 .main {
     display: flex;
     flex-direction: row;
-    width: 100%;
     align-items: center;
-    justify-content: center;
-    margin: 100px;
-    gap: 120px;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 80px;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-top: 80px;
 }
