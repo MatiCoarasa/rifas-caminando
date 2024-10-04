@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       compraRifas.push(new CompraRifa(date, nombre, email, timestamp));
     }
 
-    let appUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
+    let appUrl = process.env.VERCEL_URL;
     if (!appUrl.startsWith("https://")) appUrl = `https://${appUrl}`;
 
     const preference = await preferenceClient.create({
