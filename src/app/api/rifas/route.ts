@@ -41,8 +41,8 @@ export async function POST(request: Request) {
           }
         ],
         back_urls: {
-          "success": `${process.env.APP_URL}/result?status=success`,
-          "failure": `${process.env.APP_URL}/result?status=failure`,
+          "success": `${appUrl}/result?status=success`,
+          "failure": `${appUrl}/result?status=failure`,
         },
         payment_methods: {
           excluded_payment_types: [
