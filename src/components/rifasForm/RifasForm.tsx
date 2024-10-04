@@ -19,14 +19,6 @@ export default function RifasForm() {
     cantRifasSync = Math.max(1, newRifasValue);
     setFormData({ ...formData, cantRifas: cantRifasSync});
     setTotal(cantRifasSync * precioPorRifa);
-    // fetch('/api/email', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     to: email,
-    //     subject: 'Compra de rifa',
-    //     text: `Gracias por tu compra de ${cantRifasSync} rifa${cantRifasSync > 1 ? 's' : ''}!`
-    //   }),
-    // }).then(() => console.log('Email enviado')).catch(console.error);
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +28,6 @@ export default function RifasForm() {
   async function handleIrAPagar(ev: MouseEvent) {
     ev.preventDefault();
 
-    // Validate fields
     const newErrors = { nombre: '', email: '' };
 
     if (!formData.nombre) newErrors.nombre = "Por favor, completá tu nombre";
@@ -48,7 +39,7 @@ export default function RifasForm() {
       return;
     }
 
-    let url;
+    let url: string;
     setLoading(true);
     try {
       const response = await fetch('/api/rifas', {
