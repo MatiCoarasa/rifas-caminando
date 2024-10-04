@@ -63,7 +63,7 @@ export async function POST(request: Request) {
 
     await mongoRepository.addRifas(compraRifas);
 
-    return NextResponse.json(JSON.stringify({url: preference.init_point!}), {status: 200});
+    return NextResponse.json({url: preference.init_point!}, {status: 200});
   } catch (err) {
     console.error(err);
     return NextResponse.json(null, {status: 500});
