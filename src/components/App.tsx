@@ -6,8 +6,6 @@ import RifasForm from './rifasForm/RifasForm'
 import {Footer} from "./footer/Footer";
 
 export default function App() {
-  const precioRifas = parseInt(process.env.NEXT_PUBLIC_PRECIO_RIFA!);
-
   return (
     <div>
       <Header/>

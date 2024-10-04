@@ -3,7 +3,6 @@ import crypto from 'crypto';
 import {MercadoPagoConfig, Payment} from 'mercadopago'
 import mongoRepository from "../../../lib/repositories/persistence/mongo.repository";
 import {sendEmail} from "../../../lib/services/mailService";
-import {text} from "node:stream/consumers";
 
 // hook payload example
 // {

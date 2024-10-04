@@ -18,7 +18,8 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
-    "start": "npx serve@latest ./build"
+    "start": "npx serve@latest ./build",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -40,10 +41,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^8.57.1",
+    "@next/eslint-plugin-next": "^14.2.14",
     "@types/eslint": "^9.6.1",
     "@types/eslint__js": "^8.42.3",
     "@types/nodemailer": "^6.4.16",
     "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.14",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "typescript": "^5.6.2",
     "typescript-eslint": "^7.2.0"
