@@ -13,7 +13,6 @@ export default function App() {
         <Info />
         <RifasForm />
       </main>
-      <Footer/>
     </div>
   );
 }
