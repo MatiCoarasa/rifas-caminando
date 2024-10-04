@@ -21,9 +21,22 @@ class MongoRepository {
     return await sequenceDocument!.sequenceValue;
   }
 
-  async addRifa(compraRifa: CompraRifa) {
-    compraRifa.numero = await this.generateNextNumber();
-    this.rifas?.insertOne(compraRifa);
+  async addRifas(compraRifas: CompraRifa[]) {
+    this.rifas?.insertMany(compraRifas);
+  }
+
+  async setRifasAsPaid(purchaseId: string): Promise<CompraRifa[]> {
+    const rifas = this.rifas?.find({ purchaseId });
+    const rifasUpdated = [];
+    for await (const rifa of rifas!) {
+      const numero = await this.generateNextNumber();
+      const rifaUpdated = await this.rifas?.findOneAndUpdate(
+        { _id: rifa._id },
+        { $set: { numero: numero } },
+        { returnDocument: "after" });
+      rifasUpdated.push(CompraRifa.fromObject(rifaUpdated));
+    }
+    return rifasUpdated;
   }
 }
 

@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
-import { MercadoPagoConfig, Preference } from "mercadopago";
+import {NextResponse} from "next/server";
+import {MercadoPagoConfig, Preference} from "mercadopago";
 
 import mongoRepository from "../../../lib/repositories/persistence/mongo.repository";
-import { CompraRifa } from "../../../lib/models/compra-rifa.model";
+import {CompraRifa} from "../../../lib/models/compra-rifa.model";
 
 const mpClient = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN!,
@@ -12,29 +12,50 @@ const preferenceClient = new Preference(mpClient);
 
 // todo: guardar intento de compra de rifas en la base de datos y redirigir a MP
 export async function POST(request: Request) {
-  const { rifas } = await request.json();
+  const {nombre, email, cantRifas} = await request.json();
 
-  const rifasObj = CompraRifa.fromList(rifas);
-  for (const rifa of rifasObj) {
-    await mongoRepository.addRifa(rifa);
+  console.log(nombre, email, cantRifas);
+  if (!nombre || !email || !cantRifas) {
+    return new NextResponse(null, {status: 400});
+  }
+
+  const date = new Date();
+  const timestamp = date.getTime().toString();
+  const compraRifas: CompraRifa[] = [];
+  for (let i = 0; i < cantRifas; i++) {
+    compraRifas.push(new CompraRifa(date, nombre, email, timestamp));
   }
 
   const preference = await preferenceClient.create({
     body: {
+      external_reference: timestamp,
       items: [
         {
-          title: `${rifasObj.length === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2024`,
+          title: `${cantRifas === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2024`,
           unit_price: Number(process.env.NEXT_PUBLIC_PRECIO_RIFA),
-          quantity: rifasObj.length,
-          id: "abc",
+          quantity: cantRifas,
+          id: "rifas-24",
         }
       ],
       back_urls: {
-        "success": `${process.env.APP_URL}/success`,
-        "failure": `${process.env.APP_URL}/failure`,
+        "success": `${process.env.APP_URL}/result?status=success`,
+        "failure": `${process.env.APP_URL}/result?status=failure`,
+      },
+      payment_methods: {
+        excluded_payment_types: [
+          {id: 'credit_card'},
+          {id: 'ticket'},
+          {id: 'bank_transfer'},
+          {id: 'atm'},
+        ],
+        installments: 1  // Permitir solo pagos en una cuota
       },
       auto_return: "approved",
-    }});
+      binary_mode: true,
+    }
+  });
 
-  return new NextResponse(JSON.stringify({ url: preference.init_point! }));
+  await mongoRepository.addRifas(compraRifas);
+
+  return new NextResponse(JSON.stringify({url: preference.init_point!}));
 }

@@ -24,6 +24,63 @@
     border-radius: 5px;
     border-style: solid;
     border-width: 1px;
+    font-size: 16px;
     outline: none;
-    width: 40%;
+    flex-grow: 1;
+}
+
+.compraContainer {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.valueButton {
+    background: none;
+    border-width: 1px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.cantRifas {
+    width: 40px;
+    height: 40px;
+    background-color: #FFCE80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mpButton {
+    width: 100%;
+    background-color: #FD8B37;
+    font-size: 22px;
+    height: 52px;
+    border: none;
+    font-family: inherit;
+    margin-top: 20px;
+}
+
+.loader {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border: 5px solid rgba(255, 255, 255, 0.38);
+    border-bottom-color: #000000;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
