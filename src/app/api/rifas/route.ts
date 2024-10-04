@@ -10,9 +10,8 @@ const mpClient = new MercadoPagoConfig({
 const preferenceClient = new Preference(mpClient);
 
 export async function GET(request: Request) {
-  return new NextResponse(request.url, {status: 405});
+  return NextResponse.json({url: request.url}, {status: 200});
 }
-
 
 export async function POST(request: Request) {
   try {
@@ -64,9 +63,9 @@ export async function POST(request: Request) {
 
     await mongoRepository.addRifas(compraRifas);
 
-    return new NextResponse(JSON.stringify({url: preference.init_point!}));
+    return NextResponse.json(JSON.stringify({url: preference.init_point!}), {status: 200});
   } catch (err) {
     console.error(err);
-    return new NextResponse(null, {status: 500});
+    return NextResponse.json(null, {status: 500});
   }
 }
