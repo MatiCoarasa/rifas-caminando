@@ -11,53 +11,58 @@ const preferenceClient = new Preference(mpClient);
 
 
 export async function POST(request: Request) {
-  const {nombre, email, cantRifas} = await request.json();
+  try {
+    const {nombre, email, cantRifas} = await request.json();
 
-  console.log(nombre, email, cantRifas);
-  if (!nombre || !email || !cantRifas) {
-    return new NextResponse(null, {status: 400});
-  }
-
-  const date = new Date();
-  const timestamp = date.getTime().toString();
-  const compraRifas: CompraRifa[] = [];
-  for (let i = 0; i < cantRifas; i++) {
-    compraRifas.push(new CompraRifa(date, nombre, email, timestamp));
-  }
-
-  let appUrl = process.env.VERCEL_URL;
-  if (!appUrl.startsWith("https://")) appUrl = `https://${appUrl}`;
-
-  const preference = await preferenceClient.create({
-    body: {
-      external_reference: timestamp,
-      items: [
-        {
-          title: `${cantRifas === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2024`,
-          unit_price: Number(process.env.NEXT_PUBLIC_PRECIO_RIFA),
-          quantity: cantRifas,
-          id: "rifas-24",
-        }
-      ],
-      back_urls: {
-        "success": `${process.env.APP_URL}/result?status=success`,
-        "failure": `${process.env.APP_URL}/result?status=failure`,
-      },
-      payment_methods: {
-        excluded_payment_types: [
-          {id: 'credit_card'},
-          {id: 'ticket'},
-          {id: 'bank_transfer'},
-          {id: 'atm'},
-        ],
-        installments: 1  // Permitir solo pagos en una cuota
-      },
-      auto_return: "approved",
-      binary_mode: true,
+    console.log(nombre, email, cantRifas);
+    if (!nombre || !email || !cantRifas) {
+      return new NextResponse(null, {status: 400});
     }
-  });
 
-  await mongoRepository.addRifas(compraRifas);
+    const date = new Date();
+    const timestamp = date.getTime().toString();
+    const compraRifas: CompraRifa[] = [];
+    for (let i = 0; i < cantRifas; i++) {
+      compraRifas.push(new CompraRifa(date, nombre, email, timestamp));
+    }
 
-  return new NextResponse(JSON.stringify({url: preference.init_point!}));
+    let appUrl = process.env.VERCEL_URL;
+    if (!appUrl.startsWith("https://")) appUrl = `https://${appUrl}`;
+
+    const preference = await preferenceClient.create({
+      body: {
+        external_reference: timestamp,
+        items: [
+          {
+            title: `${cantRifas === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2024`,
+            unit_price: Number(process.env.NEXT_PUBLIC_PRECIO_RIFA),
+            quantity: cantRifas,
+            id: "rifas-24",
+          }
+        ],
+        back_urls: {
+          "success": `${process.env.APP_URL}/result?status=success`,
+          "failure": `${process.env.APP_URL}/result?status=failure`,
+        },
+        payment_methods: {
+          excluded_payment_types: [
+            {id: 'credit_card'},
+            {id: 'ticket'},
+            {id: 'bank_transfer'},
+            {id: 'atm'},
+          ],
+          installments: 1  // Permitir solo pagos en una cuota
+        },
+        auto_return: "approved",
+        binary_mode: true,
+      }
+    });
+
+    await mongoRepository.addRifas(compraRifas);
+
+    return new NextResponse(JSON.stringify({url: preference.init_point!}));
+  } catch (err) {
+    console.error(err);
+    return new NextResponse(null, {status: 500});
+  }
 }
