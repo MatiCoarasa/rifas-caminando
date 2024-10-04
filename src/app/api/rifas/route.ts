@@ -9,6 +9,10 @@ const mpClient = new MercadoPagoConfig({
 });
 const preferenceClient = new Preference(mpClient);
 
+export async function GET(request: Request) {
+  return new NextResponse(request.url, {status: 405});
+}
+
 
 export async function POST(request: Request) {
   try {
