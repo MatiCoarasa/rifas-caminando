@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import crypto from 'crypto';
 import {MercadoPagoConfig, Payment} from 'mercadopago'
-import mongoRepository from "../../../lib/repositories/persistence/mongo.repository";
-import {sendEmail} from "../../../lib/services/mailService";
+import mongoRepository from "../../../../lib/repositories/persistence/mongo.repository";
+import {sendEmail} from "../../../../lib/services/mailService";
 
 // hook payload example
 // {
