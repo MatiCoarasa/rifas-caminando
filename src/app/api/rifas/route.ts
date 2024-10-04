@@ -10,7 +10,6 @@ const mpClient = new MercadoPagoConfig({
 const preferenceClient = new Preference(mpClient);
 
 
-// todo: guardar intento de compra de rifas en la base de datos y redirigir a MP
 export async function POST(request: Request) {
   const {nombre, email, cantRifas} = await request.json();
 

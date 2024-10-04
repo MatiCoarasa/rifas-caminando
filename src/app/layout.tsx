@@ -1,6 +1,9 @@
 import React from "react";
 import {Metadata} from "next";
 
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import "./index.css";
 
 export const metadata: Metadata = {
@@ -15,6 +18,8 @@ export default function RootLayout({children,}: {
     <html lang="es">
       <body>
         <div id="root">{children}</div>
+      <Analytics />
+      <SpeedInsights />
       </body>
     </html>
   )
