@@ -42,7 +42,7 @@ export default function RifasForm() {
     let url: string;
     setLoading(true);
 
-    let appUrl = process.env.VERCEL_URL;
+    let appUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
     if (!appUrl.startsWith("https://")) appUrl = `https://${appUrl}`;
     try {
       const response = await fetch(`${appUrl}/api/rifas`, {
