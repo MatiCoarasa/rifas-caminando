@@ -43,7 +43,7 @@ export default function RifasForm() {
     setLoading(true);
 
     try {
-      const response = await fetch(`/api/rifas`, {
+      const response = await fetch(`/service/rifas`, {
         method: 'POST',
         body: JSON.stringify(formData),
       });

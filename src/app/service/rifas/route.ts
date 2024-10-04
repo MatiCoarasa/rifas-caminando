@@ -1,8 +1,8 @@
 import {NextResponse} from "next/server";
 import {MercadoPagoConfig, Preference} from "mercadopago";
 
-import mongoRepository from "../../../../lib/repositories/persistence/mongo.repository";
-import {CompraRifa} from "../../../../lib/models/compra-rifa.model";
+import mongoRepository from "../../../lib/repositories/persistence/mongo.repository";
+import {CompraRifa} from "../../../lib/models/compra-rifa.model";
 
 const mpClient = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN!,
