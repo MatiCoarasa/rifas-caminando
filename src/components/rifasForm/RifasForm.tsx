@@ -101,7 +101,7 @@ export default function RifasForm() {
             className={styles.valueButton}
             onClick={(e) => handleChangeValueClick(e, formData.cantRifas + 1)}>+
           </button>
-          <span className={styles.total}>Total: <b>${total.toLocaleString()}</b></span>
+          <span className={styles.total}>Total: <b>${total.toLocaleString('es-AR')}</b></span>
         </div>
       </div>
       <button className={styles.mpButton} onClick={handleIrAPagar} disabled={loading}>
