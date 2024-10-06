@@ -41,8 +41,8 @@ function validateSignature(request: Request) {
   const parts = xSignature.split(',');
 
 // Initializing variables to store ts and hash
-  let ts;
-  let hash;
+  let ts: string;
+  let hash: string;
 
 // Iterate over the values to obtain ts and v1
   parts.forEach(part => {
@@ -104,7 +104,8 @@ export async function POST(request: Request) {
   const rifas = await mongoRepository.setRifasAsPaid(purchaseId!);
   console.log(rifas);
 
-  const text = `¡Gracias por tu compra!\nCompraste ${rifas.length} rifas.\n\n${rifas.length > 1 ? `Tus números son: ` : `Tu número es: `}${rifas.map(rifa => rifa.numero).join(', ')}`;
+  const rifasPlural = rifas.length > 1;
+  const text = `¡Gracias por tu compra!\nCompraste ${rifas.length} ${rifasPlural ? `rifas` : `rifa`}.\n\n${rifasPlural ? `Tus números son: ` : `Tu número es: `}${rifas.map(rifa => rifa.numero).join(', ')}`;
   await sendEmail(
     rifas[0].compradorEmail,
     "Rifas Caminando Juntos 2024 - Tu compra",
