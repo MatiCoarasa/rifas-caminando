@@ -52,9 +52,8 @@ export default function RifasForm() {
 
     } catch (err) {
       console.log(err);
-      alert('Ocurrió un error. Por favor, intentalo de nuevo. Si el problema persiste, contactanos a contacto@caminandojuntosok.com');
-    } finally {
       setLoading(false);
+      alert('Ocurrió un error. Por favor, intentalo de nuevo. Si el problema persiste, contactanos a contacto@caminandojuntosok.com');
     }
 
     router.push(url);
