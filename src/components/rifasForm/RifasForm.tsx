@@ -39,7 +39,6 @@ export default function RifasForm() {
       return;
     }
 
-    let url: string;
     setLoading(true);
 
     try {
@@ -48,7 +47,8 @@ export default function RifasForm() {
         body: JSON.stringify(formData),
       });
       const responseJson = await response.json();
-      url = responseJson.url;
+      router.push(responseJson.url);
+
 
     } catch (err) {
       console.log(err);
@@ -56,7 +56,6 @@ export default function RifasForm() {
       alert('Ocurrió un error. Por favor, intentalo de nuevo. Si el problema persiste, contactanos a contacto@caminandojuntosok.com');
     }
 
-    router.push(url);
   }
 
   async function handleKeyPress (event: any) {

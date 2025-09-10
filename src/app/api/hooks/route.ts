@@ -41,8 +41,8 @@ function validateSignature(request: Request) {
   const parts = xSignature.split(',');
 
 // Initializing variables to store ts and hash
-  let ts: string;
-  let hash: string;
+  let ts: string = '';
+  let hash: string = '';
 
 // Iterate over the values to obtain ts and v1
   parts.forEach(part => {
