@@ -108,7 +108,7 @@ export async function POST(request: Request) {
   const text = `¡Gracias por tu compra!\nCompraste ${rifas.length} ${rifasPlural ? `rifas` : `rifa`}.\n\n${rifasPlural ? `Tus números son: ` : `Tu número es: `}${rifas.map(rifa => rifa.numero).join(', ')}`;
   await sendEmail(
     rifas[0].compradorEmail,
-    "Rifas Caminando Juntos 2024 - Tu compra",
+    "Rifas Caminando Juntos 2025 - Tu compra",
     text,
   );
 

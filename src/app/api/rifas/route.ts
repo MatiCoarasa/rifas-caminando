@@ -35,10 +35,10 @@ export async function POST(request: Request) {
         external_reference: timestamp,
         items: [
           {
-            title: `${cantRifas === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2024`,
+            title: `${cantRifas === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2025`,
             unit_price: Number(process.env.NEXT_PUBLIC_PRECIO_RIFA),
             quantity: cantRifas,
-            id: "rifas-24",
+            id: "rifas-25",
           }
         ],
         back_urls: {
