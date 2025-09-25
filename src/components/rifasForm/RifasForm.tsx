@@ -3,6 +3,10 @@ import {ChangeEvent, MouseEvent, useState} from "react";
 import { useRouter } from "next/navigation";
 
 export default function RifasForm() {
+  if (!process.env.NEXT_PUBLIC_PRECIO_RIFA) {
+    throw new Error("Falta configurar el precio de la rifa en las variables de entorno");
+  }
+
   const precioPorRifa = parseInt(process.env.NEXT_PUBLIC_PRECIO_RIFA!);
   const cantRifasIniciales = 1;
 

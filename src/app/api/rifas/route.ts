@@ -30,15 +30,16 @@ export async function POST(request: Request) {
     }
 
     let appUrl = process.env.APP_URL;
+    const precioRifa = Number(process.env.NEXT_PUBLIC_PRECIO_RIFA);
     const preference = await preferenceClient.create({
       body: {
         external_reference: timestamp,
         items: [
           {
-            title: `${cantRifas === 1 ? "Rifa" : "Rifas"} Caminando Juntos 2025`,
-            unit_price: Number(process.env.NEXT_PUBLIC_PRECIO_RIFA),
+            title: `Donación Caminando Juntos`,
+            unit_price: precioRifa,
             quantity: cantRifas,
-            id: "rifas-25",
+            id: `donacion-cjs-${precioRifa}`,
           }
         ],
         back_urls: {
