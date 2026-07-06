@@ -55,7 +55,7 @@ export async function POST(request: Request) {
           ],
           installments: 1  // Permitir solo pagos en una cuota
         },
-        auto_return: "approved",
+        ...(appUrl ? {auto_return: "approved" as const} : {}),
         binary_mode: true,
       }
     });

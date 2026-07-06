@@ -7,7 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./index.css";
 
 export const metadata: Metadata = {
-  title: "Rifa Solidaria 2025",
+  title: "Rifa Solidaria 2026",
   description: "Asociación Civil Caminando Juntos",
 }
 
