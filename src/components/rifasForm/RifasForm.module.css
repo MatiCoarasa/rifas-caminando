@@ -70,6 +70,7 @@
     font-family: inherit;
     margin-top: 20px;
     color: black;
+    cursor: pointer;
 }
 
 .loader {
