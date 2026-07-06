@@ -13,12 +13,19 @@ class MongoRepository {
   }
 
   private async generateNextNumber(): Promise<number> {
+    const counterId = process.env.COUNTER_ID;
+    if (!counterId) {
+      throw new Error("COUNTER_ID env var is not set");
+    }
     const sequenceDocument = await this.counter!.findOneAndUpdate(
-      { _id: new ObjectId(process.env.COUNTER_ID) },
+      { _id: new ObjectId(counterId) },
       { $inc: { sequenceValue: 1 } },
       { returnDocument: "after" }
     );
-    return await sequenceDocument!.sequenceValue;
+    if (!sequenceDocument) {
+      throw new Error(`Counter document with _id ${counterId} not found in collection ${process.env.DB_COLL_COUNTER}`);
+    }
+    return sequenceDocument.sequenceValue;
   }
 
   async addRifas(compraRifas: CompraRifa[]) {
