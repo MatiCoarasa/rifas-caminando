@@ -11,7 +11,7 @@ export default function Info() {
       <div className={styles.preguntasContainer}>
         <div>
           <h3>¿CUÁNDO SORTEAMOS?</h3>
-          <p>A CONFIRMAR - AVISEN A MATI</p>
+          <p>Domingo 23 de Agosto</p>
         </div>
         <div>
           <h3>¿DÓNDE SORTEAMOS?</h3>
