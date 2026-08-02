@@ -11,7 +11,7 @@ export default function Info() {
       <div className={styles.preguntasContainer}>
         <div>
           <h3>¿CUÁNDO SORTEAMOS?</h3>
-          <p>{process.env.FECHA_SORTEO}</p>
+          <p>{process.env.NEXT_PUBLIC_FECHA_SORTEO}</p>
         </div>
         <div>
           <h3>¿DÓNDE SORTEAMOS?</h3>
