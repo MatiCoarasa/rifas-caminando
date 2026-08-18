@@ -17,7 +17,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:email": "tsx --env-file=.env scripts/test-email.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +48,7 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^10.6.0",
     "eslint-config-next": "^16.2.10",
+    "tsx": "^4.23.12",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.1"
   }

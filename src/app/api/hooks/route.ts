@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import crypto from 'crypto';
+import path from 'path';
 import {MercadoPagoConfig, Payment} from 'mercadopago'
 import mongoRepository from "../../../lib/repositories/persistence/mongo.repository";
 import {sendEmail} from "../../../lib/services/mailService";
@@ -105,11 +106,19 @@ export async function POST(request: Request) {
   console.log(rifas);
 
   const rifasPlural = rifas.length > 1;
-  const text = `¡Gracias por tu compra!\nCompraste ${rifas.length} ${rifasPlural ? `rifas` : `rifa`}.\n\n${rifasPlural ? `Tus números son: ` : `Tu número es: `}${rifas.map(rifa => rifa.numero).join(', ')}`;
+  const fechaSorteo = (process.env.NEXT_PUBLIC_FECHA_SORTEO ?? '').toLowerCase();
+  const text = `¡Hola! Gracias por tu compra ❤️\n\n${rifasPlural ? `Tus números son: ` : `Tu número es: `}${rifas.map(rifa => rifa.numero).join(' - ')}\n\nSorteamos el ${fechaSorteo} a través de nuestro Instagram (https://www.instagram.com/caminando.juntosok/).\nMuchos éxitos ✨`;
+  const html = `<p><strong>¡Hola! Gracias por tu compra ❤️</strong></p><p>${rifasPlural ? `Tus números son: ` : `Tu número es: `}${rifas.map(rifa => rifa.numero).join(' - ')}</p><p>Sorteamos el ${fechaSorteo} a través de nuestro <a href="https://www.instagram.com/caminando.juntosok/">Instagram</a>.<br/>Muchos éxitos ✨</p><div style="text-align:left;"><img src="cid:agradecimiento" alt="¡Gracias por tu compra!" width="540" style="width:540px;height:auto;" /></div>`;
   await sendEmail(
     rifas[0].compradorEmail,
     "Rifas Caminando Juntos 2026 - Tu compra",
     text,
+    html,
+    [{
+      filename: 'agradecimiento.png',
+      path: path.join(process.cwd(), 'public', 'agradecimiento.png'),
+      cid: 'agradecimiento',
+    }],
   );
 
   return new NextResponse(null, { status: 200 });
